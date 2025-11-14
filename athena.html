@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>ATHENA – Creador de Personaje</title>
+  <link rel="stylesheet" href="css/athena.css">
+  <style>
+    /* Las habilidades solo se ven en el PDF */
+    @media screen { #p_skills { display: none; } }
+    @media print  { #p_skills { display: grid; } }
+  </style>
+</head>
+<body>
+  <div class="vignette"></div>
+  <div class="planet-bg" aria-hidden="true"></div>
+
+  <header>
+    <div class="logo">
+      <div class="logo-mark"></div>
+      <div>
+        <h1>ATHENA – Creador de Personaje</h1>
+        <div class="subtitle">Nivel 3 • El planeta olvidado por todo el universo</div>
+      </div>
+    </div>
+    <div style="display:flex; gap:8px; align-items:center">
+      <button class="btn" id="btnPrint">Imprimir PDF</button>
+      <div class="pill">v4.2</div>
+    </div>
+  </header>
+
+  <main class="container">
+    <!-- IZQUIERDA -->
+    <section class="left">
+      <div class="tabs">
+        <div id="tabRaces" class="tab active" role="tab">Razas</div>
+        <div id="tabClasses" class="tab" role="tab">Clases</div>
+      </div>
+      <div id="listRaces" class="grid"></div>
+      <div id="listClasses" class="grid" style="display:none"></div>
+    </section>
+
+    <!-- DERECHA -->
+    <section class="right">
+      <div class="pane">
+        <h2>Selección</h2>
+        <div class="row">
+          <div><div class="mini">Raza</div><div id="selRace" class="title">—</div></div>
+          <div><div class="mini">Clase</div><div id="selClass" class="title">—</div></div>
+        </div>
+        <div class="mini" id="selDesc" style="margin-top:8px;">Selecciona una raza y una clase.</div>
+      </div>
+
+      <div class="pane">
+        <h2>Nombre & Nivel</h2>
+        <div class="row">
+          <input id="nameInput" type="text" placeholder="Escribe un nombre..." />
+          <button class="btn" id="btnRandName">Generar</button>
+        </div>
+        <div class="row" style="margin-top:8px;">
+          <label class="mini" style="width:120px">Nivel</label>
+          <div class="mini">(Fijo en 3, competencia: <span id="profBonus">+2</span>)</div>
+        </div>
+      </div>
+
+      <div class="pane">
+        <h2>Asignación de atributos</h2>
+        <div class="assign" id="assign"></div>
+      </div>
+
+      <div class="pane">
+        <h2>Defensa & Vitalidad</h2>
+        <div class="row"><label class="mini" style="width:110px">CA</label><input id="acInput" type="number" value="15"></div>
+        <div class="row"><label class="mini" style="width:110px">Velocidad</label><span id="speedDisplay" class="mini">—</span></div>
+        <div class="row"><label class="mini" style="width:110px">Vida (PG)</label><input id="hpInput" type="number" placeholder="Introduce los PG"></div>
+      </div>
+
+      <div class="pane">
+        <h2>Equipo y Armas</h2>
+        <div class="row">
+          <label class="mini" style="width:110px">Arma principal</label>
+          <input id="weaponInput" type="text" placeholder="Ej. rifle de energía, espada vibro..." />
+        </div>
+        <div class="row" style="margin-top:8px;">
+          <label class="mini" style="width:110px">Equipamiento</label>
+          <textarea id="gearInput" rows="3" placeholder="Describe tu equipo, herramientas, mochila, etc." style="flex:1;background:var(--panel-2);color:var(--text);border:1px solid rgba(255,255,255,.12);border-radius:10px;padding:8px 10px;"></textarea>
+        </div>
+        <div class="pane">
+          <h2>Rasgos</h2>
+          <div class="traits-section">
+            <div><strong>Raza:</strong> <span id="raceTraits">—</span></div>
+            <div style="margin-top:6px;"><strong>Clase:</strong> <span id="classTraits">—</span></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="pane">
+        <h2>Acciones</h2>
+        <div class="footer">
+          <div class="status" id="status">Estado: esperando selección.</div>
+          <button class="btn" id="btnValidate">Validar</button>
+        </div>
+      </div>
+    </section>
+
+    <!-- PLANTILLA DE IMPRESIÓN -->
+    <section id="printRoot" style="display:none">
+      <div class="print-page">
+        <h2 style="text-align:center; color:#22ffd6;">ATHENA – Ficha de Personaje</h2>
+        <hr style="border:1px solid rgba(34,255,214,0.4); margin:10px 0;">
+        
+        <p><strong>Nombre:</strong> <span id="p_name"></span></p>
+        <p><strong>Raza:</strong> <span id="p_race"></span></p>
+        <p><strong>Clase:</strong> <span id="p_class"></span></p>
+        <p><strong>CA:</strong> <span id="p_ac"></span></p>
+        <p><strong>Velocidad:</strong> <span id="p_speed"></span></p>
+        <p><strong>PG:</strong> <span id="p_hp"></span></p>
+        <p><strong>Arma principal:</strong> <span id="p_weapon"></span></p>
+        <p><strong>Equipamiento:</strong> <span id="p_gear"></span></p>
+        
+        <h3 style="color:#22ffd6;">Atributos</h3>
+        <div id="p_stats" style="display:grid;grid-template-columns:repeat(3,1fr);gap:8px;"></div>
+
+        <!-- HABILIDADES: solo aparecen en PDF -->
+        <h3 style="color:#22ffd6;margin-top:10px;">Habilidades</h3>
+        <div id="p_skills" style="display:grid;grid-template-columns:repeat(3,1fr);gap:6px;font-size:9px;"></div>
+
+        <h3 style="color:#22ffd6;">Rasgos</h3>
+        <div id="p_traitsBox" style="
+          border: 1px solid rgba(34,255,214,0.4);
+          border-radius: 6px;
+          padding: 8px;
+          margin-bottom: 8px;
+        ">
+          <p><strong>Raza: </br></strong> <span id="p_raceTraits"></span></p>
+          <p><strong>Clase:</br></strong> <span id="p_classTraits"></span></p>
+        </div>
+        <hr style="border:1px solid rgba(34,255,214,0.4); margin:10px 0;">
+        <p style="text-align:center;color:#9aa8c7;font-size:12px;">Generado con ATHENA v4.2</p>
+
+      </div>
+    </section>
+  </main>
+
+  <script src="js/athena.js"></script>
+</body>
+</html>

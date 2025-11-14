@@ -1,0 +1,310 @@
+/*
+    Estilos generales para que las etiquetas no contengan propiedades
+    que nos estorben y en todos los navegadores se vean correctamente
+*/
+* {
+    margin: 0;
+    padding: 0;
+    border: 0;
+    -webkit-box-sizing: border-box;
+            box-sizing: border-box;
+    vertical-align: baseline;
+  }
+  body::-webkit-scrollbar {
+    display: none;
+  }
+  
+  img {
+    display: block;
+    max-width: 100%;
+    width: 100%;
+    -o-object-fit: cover;
+       object-fit: cover;
+    -o-object-position: center;
+       object-position: center;
+  }
+  
+  a {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    text-decoration: none;
+    color: inherit;
+  }
+  
+  video {
+    width: 100%;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -o-object-fit: cover;
+       object-fit: cover;
+    -o-object-position: center center;
+       object-position: center center;
+  }
+  
+  audio {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+  }
+  
+  p a {
+    display: inline;
+  }
+  
+  li {
+    list-style-type: none;
+  }
+  
+  table, tr, td {
+    border-collapse: collapse;
+    border-spacing: 0;
+  }
+  
+  html {
+    scroll-behavior: smooth;
+    /* Ocultar la barra del scroll pero mantener la funcionalidad */
+    overflow-y: scroll;
+    scrollbar-width: none; /* Firefox */
+    -ms-overflow-style: none; /* IE and Edge */
+  }
+
+  html::-webkit-scrollbar {
+    display: none; /* Chrome, Safari, Opera */
+  }
+  
+  body {
+    font: normal normal normal 100%/140% Fakt Pro Medium, "Roboto", sans-serif;
+    -webkit-hyphens: auto;
+        -ms-hyphens: auto;
+            hyphens: auto;
+    color: #181818;
+    background: #e7e7e7;
+    /* font-smooth: always;-webkit-font-smoothing: antialiased;-moz-osx-font-smoothing: grayscale; */
+  }
+  
+  h1, h2, h3, h4, h5, h6 {
+    -webkit-hyphens: auto;
+        -ms-hyphens: auto;
+            hyphens: auto;
+    color: inherit;
+    font-size: inherit;
+    font-weight: inherit;
+  }
+  
+  form input, form textarea, form select {
+    font: normal normal normal 100%/140% Fakt Pro Medium, "Roboto", sans-serif;
+    -webkit-hyphens: auto;
+        -ms-hyphens: auto;
+            hyphens: auto;
+    background-color: transparent;
+    -webkit-appearance: none;
+       -moz-appearance: none;
+            appearance: none;
+    display: block;
+  }
+  
+  @-webkit-keyframes aparecer {
+    0% {
+      opacity: 0;
+    }
+    25% {
+      opacity: 1;
+    }
+    75% {
+      opacity: 1;
+    }
+    100% {
+      opacity: 0;
+    }
+  }
+  
+  @keyframes aparecer {
+    0% {
+      opacity: 0;
+    }
+    25% {
+      opacity: 1;
+    }
+    75% {
+      opacity: 1;
+    }
+    100% {
+      opacity: 0;
+    }
+  }
+  body {
+    min-height: 700vh;
+    background-color: black;
+    /* Ocultar la barra del scroll pero mantener la funcionalidad */
+    scrollbar-width: none; /* Firefox */
+    -ms-overflow-style: none; /* IE and Edge */
+  }
+
+  
+  video {
+    position: fixed;
+    top: 0;
+  }
+
+  /* Variables CSS para mantener consistencia con athena.html */
+  :root {
+    --bg: #0a0e14;
+    --panel: #121825;
+    --panel-2: #0f1522;
+    --card: #141b2b;
+    --accent: #22ffd6;
+    --accent-2: #7c4dff;
+    --text: #e8eefc;
+    --muted: #9aa8c7;
+    --ok: #2ecc71;
+    --warn: #f1c40f;
+    --bad: #e74c3c;
+    --stroke: rgba(255,255,255,.14);
+    --glow: 0 0 24px rgba(34,255,214,.18), 0 0 64px rgba(124,77,255,.12);
+  }
+
+  /* Estilos para el botón "Crear Personaje" - Centrado y con estilos de athena.html */
+  .boton-crear-personaje {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 1000;
+    display: none; /* Inicialmente oculto */
+    animation: aparecerDesdeCentro 0.6s ease-out;
+  }
+
+  .btn-crear-personaje {
+    /* Usando los mismos estilos que .continue en athena.html */
+    font-size: 18px;
+    padding: 16px 24px;
+    border-radius: 12px;
+    background: linear-gradient(135deg, var(--accent), var(--accent-2));
+    border: none;
+    color: #0a0f1e;
+    font-weight: 800;
+    box-shadow: var(--glow);
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    transition: all 0.3s ease;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    font-family: 'Orbitron', ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Arial;
+  }
+
+  .texto {
+    font-weight: 800;
+  }
+
+  /* Estilos para el indicador de scroll */
+  .indicador-scroll {
+    position: fixed;
+    bottom: 80px;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 1001;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 15px;
+    animation: latidoIndicador 2s ease-in-out infinite;
+  }
+
+  .texto-indicador {
+    font-family: 'Orbitron', ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Arial;
+    font-size: 16px;
+    font-weight: 600;
+    color: var(--accent);
+    text-align: center;
+    text-shadow: 0 0 10px rgba(34, 255, 214, 0.6);
+    letter-spacing: 1px;
+    text-transform: uppercase;
+  }
+
+  .flecha-indicador {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 8px;
+  }
+
+  .flecha {
+    width: 0;
+    height: 0;
+    border-left: 12px solid transparent;
+    border-right: 12px solid transparent;
+    border-top: 20px solid var(--accent);
+    filter: drop-shadow(0 0 8px rgba(34, 255, 214, 0.8));
+    animation: flechaLatido 1.5s ease-in-out infinite;
+  }
+
+  @keyframes latidoIndicador {
+    0%, 100% {
+      opacity: 1;
+      transform: translateX(-50%) scale(1);
+    }
+    50% {
+      opacity: 0.7;
+      transform: translateX(-50%) scale(1.05);
+    }
+  }
+
+  @keyframes flechaLatido {
+    0%, 100% {
+      transform: translateY(0px);
+      opacity: 1;
+    }
+    50% {
+      transform: translateY(8px);
+      opacity: 0.8;
+    }
+  }
+
+  /* Responsive para móviles */
+  @media (max-width: 768px) {
+    .indicador-scroll {
+      bottom: 60px;
+    }
+    
+    .texto-indicador {
+      font-size: 14px;
+    }
+    
+    .flecha {
+      border-left: 10px solid transparent;
+      border-right: 10px solid transparent;
+      border-top: 16px solid var(--accent);
+    }
+  }
+
+  @keyframes aparecerDesdeCentro {
+    0% {
+      opacity: 0;
+      transform: translate(-50%, -50%) scale(0.8);
+    }
+    50% {
+      opacity: 0.8;
+      transform: translate(-50%, -50%) scale(1.1);
+    }
+    100% {
+      opacity: 1;
+      transform: translate(-50%, -50%) scale(1);
+    }
+  }
+
+  /* Responsive para móviles */
+  @media (max-width: 768px) {
+    .btn-crear-personaje {
+      font-size: 16px;
+      padding: 14px 20px;
+      border-radius: 10px;
+    }
+    
+    .icono {
+      font-size: 1.4rem;
+    }
+  }
