@@ -21,11 +21,11 @@ const SKILLS = [
 ];
 
 const RACES = [
-  { id:'elfo', name:'Elfo biónico', icon:'🧝‍♂️', desc:'Reflejos y óptica mejorada.', bonuses:{FUE:0,DES:2,CON:0,INT:1,SAB:0,CAR:0}, speed:30 },
-  { id:'humano', name:'Humano biónico', icon:'👤', desc:'Versátiles y adaptables.', bonuses:{FUE:1,DES:0,CON:1,INT:0,SAB:0,CAR:1}, speed:30 },
-  { id:'enano', name:'Enano biónico', icon:'🧔', desc:'Tenaces y resistentes.', bonuses:{FUE:0,DES:0,CON:2,INT:0,SAB:1,CAR:0}, speed:25 },
-  { id:'mediano', name:'Mediano biónico', icon:'🧒', desc:'Ágiles y sigilosos.', bonuses:{FUE:0,DES:2,CON:0,INT:0,SAB:1,CAR:0}, speed:25 },
-  { id:'gnomo', name:'Gnomo biónico', icon:'🤖', desc:'Analíticos y curiosos.', bonuses:{FUE:0,DES:0,CON:0,INT:2,SAB:1,CAR:0}, speed:25 }
+  { id:'elfo', name:'Elfo biónico', icon:'🧝‍♂️', desc:'Reflejos y óptica mejorada.', bonuses:{FUE:0,DES:2,CON:0,INT:0,SAB:0,CAR:0}, speed:30 },
+  { id:'humano', name:'Humano biónico', icon:'👤', desc:'Versátiles y adaptables.', bonuses:{FUE:1,DES:1,CON:1,INT:1,SAB:1,CAR:1}, speed:30 },
+  { id:'enano', name:'Enano biónico', icon:'🧔', desc:'Tenaces y resistentes.', bonuses:{FUE:0,DES:0,CON:2,INT:0,SAB:0,CAR:0}, speed:25 },
+  { id:'mediano', name:'Mediano biónico', icon:'🧒', desc:'Ágiles y sigilosos.', bonuses:{FUE:0,DES:2,CON:0,INT:0,SAB:0,CAR:0}, speed:25 },
+  { id:'gnomo', name:'Gnomo biónico', icon:'🤖', desc:'Analíticos y curiosos.', bonuses:{FUE:0,DES:0,CON:0,INT:2,SAB:0,CAR:0}, speed:25 }
 ];
 
 const CLASSES = [
