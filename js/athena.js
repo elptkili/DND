@@ -207,7 +207,7 @@ function renderAssign(){
   });
 }
 
-$('#btnRandName').onclick=()=>{if(state.race){state.name=choice(['Aelion','Mira','Kael','Thorin','Lyra','Nira','Solenn','Varik','Elara','Drax','Kyra','Orren','Talia','Riven','Sarek','Zyra','Khalen','Astra','Veyla','Kaena','Dorian','Seris','Nyx','Varek','Lunara','Xeran','Kira','Soren','Jyn','Rhoen', 'Selka','Taran','Elyndra','Marek','Sia','Vesper','Kaelis','Renna','Orion','Kell','Voss','Naerys','Dhalan','Rivena','Zorek','Ylena','Kasra','Orian','Thalos','Lirae','Nox','Vaelis','Ryna','Kelaris','Jora','Syra','Talos','Rivka','Aelor','Zai','Kess','Draven','Corin','Maela','Zylen','Ysera','Fayra','Hale','Varyn','Alira','Jarek','Saera','Neris','Corva','Torrin','Reka','Zae','Marris','Serin','Rova','Kaelis','Narek','Syl','Vara','Olen','Nirae','Tessra','Valen','Astrae','Riven Sol']);$('#nameInput').value=state.name;}};
+$('#btnRandName').onclick=()=>{if(state.race){state.name=choice(['Aelion','Mira','Kael','Thorin','Lyra']);$('#nameInput').value=state.name;}};
 $('#nameInput').oninput=e=>state.name=e.target.value;
 $('#acInput').oninput=e=>state.ac=parseInt(e.target.value||0,10);
 $('#hpInput').oninput=e=>state.hpMax=parseInt(e.target.value||0,10);
